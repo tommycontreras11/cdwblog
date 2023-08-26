@@ -83,7 +83,7 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article): RedirectResponse
     {
-
+        $article->delete();
         return redirect(route('articles.index'))->with('message', 'Article has successfully been deleted.');
     }
 
