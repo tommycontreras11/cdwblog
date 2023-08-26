@@ -8,6 +8,7 @@ use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
 use App\Models\Category;
 use App\Models\Tag;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -15,6 +16,12 @@ use Illuminate\Support\Str;
 
 class ArticleController extends Controller
 {
+    use AuthorizesRequests;
+
+    public function __construct()
+    {
+        $this->authorizeResource(Article::class, 'article');
+    }
     /**
      * Display a listing of the resource.
      */
@@ -84,7 +91,7 @@ class ArticleController extends Controller
     public function destroy(Article $article): RedirectResponse
     {
         $article->delete();
-        return redirect(route('articles.index'))->with('message', 'Article has successfully been deleted.');
+        return redirect(route('dashboard'))->with('message', 'Article has successfully been deleted.');
     }
 
     private function getFormData(): array
