@@ -15,10 +15,11 @@
 </head>
 <body class="font-sans text-gray-900 antialiased dark:bg-gray-900">
 <div
-    class="relative sm:flex sm:items-center bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
+    class="relative sm:flex sm:items-center bg-dots-darker bg-center bg-gray-900 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
     @include('articles.layouts.navbar')
 
     @yield('content')
 </div>
 </body>
 </html>
+
